@@ -3,8 +3,10 @@ var router = express.Router();
 
 //home route
 router.get("/", function(req, res) {
-
+    res.render("index", {})
 })
+
+module.exports = router;
 
 //NOTES
 //have tabs to flip through instead of moving submitted burgers to a section
