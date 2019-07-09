@@ -1,7 +1,4 @@
-var express = require("express");
-var app = express();
 var mysql = require("mysql");
-var PORT = process.env.PORT || 3000;
 
 var connection = mysql.createConnection({
     host: "localhost",
@@ -16,6 +13,4 @@ connection.connect(function(err) {
     console.log("Connected as id " + connection.threadId);
 })
 
-app.listen(PORT, function() {
-    console.log("App listening on port " + PORT);
-})
+module.exports = connection;
