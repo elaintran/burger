@@ -3,14 +3,7 @@ var router = express.Router();
 var burger = require("../models/burger.js");
 
 //home route
-// router.get("/", function(req, res) {
-//     connection.query("SELECT * FROM burger_menu", function(err, data) {
-//         if (err) throw err;
-//         res.render("index", {burgers: data})
-//     })
-// })
-
-// router.get("/")
+router.get("/", getMenu, getBurgers, renderBurgers);
 
 function getMenu(req, res, next) {
     burger.selectMenu(function(data) {
@@ -26,22 +19,12 @@ function getBurgers(req, res, next) {
     })
 }
 
-// function getBurgers(req, res, next) {
-//     connection.query("SELECT * FROM burgers", function(err, data) {
-//         if (err) throw err;
-//         req.burgers = data;
-//         next();
-//     })
-// }
-
 function renderBurgers(req, res) {
     res.render("index", {
         menu: req.menu,
-        burgers: req.burgers
+        burgers: req.burger
     })
 }
-
-router.get("/", getMenu, getBurgers, renderBurgers);
 
 //create a new burger and add onto the menu
 router.post("/api/burgers", function(req, res) {

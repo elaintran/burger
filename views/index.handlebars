@@ -31,24 +31,14 @@
                     <h6>Order Summary</h6>
                     <div class="ordered">
                         <div class="row">
+                            {{#each burgers}}
                             <div class="col-9">
-                                <p>Hamburger</p>
+                                <p>{{burger_name}}</p>
                             </div>
                             <div class="col-3">
-                                <p>1.39</p>
+                                <p>{{burger_price}}</p>
                             </div>
-                            <div class="col-9">
-                                <p>Cheeseburger</p>
-                            </div>
-                            <div class="col-3">
-                                <p>1.39</p>
-                            </div>
-                            <div class="col-9">
-                                <p>Spicy Chicken Burger</p>
-                            </div>
-                            <div class="col-3">
-                                <p>1.39</p>
-                            </div>
+                            {{/each}}
                         </div>
                     </div>
                     <div class="row">
