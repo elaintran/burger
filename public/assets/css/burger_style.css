@@ -10,6 +10,14 @@ p {
     margin-bottom: 10px;
 }
 
+.container {
+    padding-top: 40px;
+}
+
+.menu-title {
+    width: 100%;
+}
+
 .menu-title h2 {
     color: #e83b29;
     text-transform: uppercase;
@@ -18,14 +26,13 @@ p {
     margin-bottom: 25px;
 }
 
-.burger-menu input[type="checkbox"] {
+input[type="checkbox"] {
     display: none;
 }
 
 .burger-item {
-    width: 50%;
     margin-bottom: 20px;
-    padding: 10px 10px 10px 0px;
+    /* padding: 10px 10px 10px 0px; */
 }
 
 .burger-name, h6 {
@@ -35,23 +42,34 @@ p {
     margin-bottom: 10px;
 }
 
-.alt {
-    color: #e83b29;
+.add-item {
     font-weight: 700;
+    border: 1px solid #e83b29;
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+.add-item p {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #e83b29;
+    margin-bottom: 0;
 }
 
 .burger-menu {
-    width: 60%;
+    /* width: 65%; */
     display: flex;
     flex-wrap: wrap;
 }
 
 .burger-section {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .checkout {
-    width: 40%;
+    /* width: 35%; */
     height: 200px;
     background-color: #fef1ee;
+    border-radius: 20px;
 }

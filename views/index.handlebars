@@ -1,20 +1,39 @@
 <div class="container">
-    <div class="menu-title">
-        <h2>Burger Menu</h2>
-    </div>
     <div class="burger-section">
-        <div class="burger-menu">
-            {{#each burgers}}
-            <input type="checkbox" name="burger-item" id="burger-{{id}}">
-            <label for="burger-{{id}}" class="burger-item">
-                <h6 class="burger-name">{{burger_name}}</h6>
-                <p>{{burger_ingredients}}</p>
-                <p class="alt">+ Add to Checkout</p>
-            </label>
-            {{/each}}
-        </div>
-        <div class="checkout">
-            <h6 style="color: #e83b29;">Checkout</h6>
+        {{!-- <div class="burger-menu"> --}}
+        <div class="row">
+            <div class="col-sm-7">
+                <div class="menu-title">
+                    <h2>Burger Menu</h2>
+                </div>
+                <div class="row">
+                    {{#each burgers}}
+                    <div class="col-md-6">
+                        <div class="burger-item">
+                            <div class="row">
+                                <div class="col-9">
+                                    <h6 class="burger-name">{{burger_name}}</h6>
+                                </div>
+                                <div class="col-3">
+                                    <h6>{{burger_price}}</h6>
+                                </div>
+                            </div>
+                            <p>{{burger_ingredients}}</p>
+                            <input type="checkbox" name="burger-item" id="burger-{{id}}">
+                            <label for="burger-{{id}}" class="add-item">
+                                <p>+ Add To Cart</p>
+                            </label>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        {{!-- </div> --}}
+            <div class="col-sm-5">
+                <div class="checkout">
+                    <h6 style="color: #e83b29;">Your Order</h6>
+                </div>
+            </div>
         </div>
     </div>
 </div>
