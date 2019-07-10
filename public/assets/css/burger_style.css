@@ -10,6 +10,13 @@ p {
     margin-bottom: 10px;
 }
 
+h6 {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
 .container {
     padding-top: 40px;
 }
@@ -26,20 +33,14 @@ p {
     margin-bottom: 25px;
 }
 
-input[type="checkbox"] {
+.burger-item input[type="checkbox"] {
     display: none;
 }
 
 .burger-item {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    padding-right: 20px
     /* padding: 10px 10px 10px 0px; */
-}
-
-.burger-name, h6 {
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
 }
 
 .add-item {
@@ -47,6 +48,7 @@ input[type="checkbox"] {
     border: 1px solid #e83b29;
     padding: 5px 15px;
     border-radius: 20px;
+    margin-top: 5px;
 }
 
 .add-item p {
@@ -56,8 +58,8 @@ input[type="checkbox"] {
     margin-bottom: 0;
 }
 
-.burger-menu {
-    /* width: 65%; */
+/* .burger-menu {
+    width: 65%;
     display: flex;
     flex-wrap: wrap;
 }
@@ -65,11 +67,69 @@ input[type="checkbox"] {
 .burger-section {
     display: flex;
     flex-wrap: wrap;
+} */
+
+.cart {
+    /* height: 200px; */
+    background-color: #fef1ee;
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+
+.cart h6 {
+    color: #e83b29;
+    padding-bottom: 10px;
+    /* border-bottom: 1px solid black; */
+}
+
+.cart p {
+    /* text-transform: uppercase; */
+    font-weight: 700;
+    color: #3a3a3a;
+}
+
+.ordered {
+    margin-bottom: 20px;
+    /* border-bottom: 1px solid black; */
 }
 
 .checkout {
-    /* width: 35%; */
-    height: 200px;
-    background-color: #fef1ee;
+    border: 0;
+    background-color: #e83b29;
+    text-transform: uppercase;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    width: 100%;
+    padding: 10px;
     border-radius: 20px;
+    margin-top: 10px;
+}
+
+.checkout:hover {
+    opacity: 0.9;
+}
+
+/* .burger-menu {
+    padding-right: 20px;
+} */
+
+.price {
+    float: right;
+}
+
+.burger-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.burger-title h6 {
+    margin-bottom: 0;
+}
+
+.fa-pen {
+    font-size: 11px;
+    margin-left: 15px;
 }
