@@ -14,7 +14,7 @@ h6 {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
 }
 
 .container {
@@ -48,7 +48,7 @@ h6 {
     border: 1px solid #e83b29;
     padding: 5px 15px;
     border-radius: 20px;
-    margin-top: 5px;
+    /* margin-top: 5px; */
 }
 
 .add-item p {
@@ -89,8 +89,9 @@ h6 {
 }
 
 .ordered {
-    margin-bottom: 20px;
-    /* border-bottom: 1px solid black; */
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 0.5px solid black;
 }
 
 .checkout {
@@ -132,4 +133,12 @@ h6 {
 .fa-pen {
     font-size: 11px;
     margin-left: 15px;
+}
+
+.burger-item .row {
+    align-items: center;
+}
+
+.burger-item .col-5 {
+    text-align: right;
 }
