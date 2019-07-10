@@ -1,6 +1,8 @@
+//node packages and env
 var mysql = require("mysql");
 require("dotenv").config();
 
+//set up mysql connection
 var connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
@@ -14,4 +16,5 @@ connection.connect(function(err) {
     console.log("Connected as id " + connection.threadId);
 })
 
+//export into config/orm.js
 module.exports = connection;
