@@ -4,7 +4,12 @@ var orm = require("../config/orm.js");
 var burger = {
     //burger.select displays the information from mysql using the orm function
     //cb is callback
-    select: function(cb) {
+    selectMenu: function(cb) {
+        orm.select("burger_menu", function(result) {
+            cb(result);
+        })
+    },
+    selectBurger: function(cb) {
         orm.select("burgers", function(result) {
             cb(result);
         })

@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-var connection = require("../config/connection.js");
+var burger = require("../models/burger.js");
 
 //home route
 // router.get("/", function(req, res) {
@@ -10,21 +10,29 @@ var connection = require("../config/connection.js");
 //     })
 // })
 
+// router.get("/")
+
 function getMenu(req, res, next) {
-    connection.query("SELECT * FROM burger_menu", function(err, data) {
-        if (err) throw err;
+    burger.selectMenu(function(data) {
         req.menu = data;
         next();
     })
 }
 
 function getBurgers(req, res, next) {
-    connection.query("SELECT * FROM burgers", function(err, data) {
-        if (err) throw err;
-        req.burgers = data;
+    burger.selectBurger(function(data) {
+        req.burger = data;
         next();
     })
 }
+
+// function getBurgers(req, res, next) {
+//     connection.query("SELECT * FROM burgers", function(err, data) {
+//         if (err) throw err;
+//         req.burgers = data;
+//         next();
+//     })
+// }
 
 function renderBurgers(req, res) {
     res.render("index", {
