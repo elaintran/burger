@@ -1,9 +1,13 @@
 var express = require("express");
 var router = express.Router();
+var connection = require("../config/connection.js");
 
 //home route
 router.get("/", function(req, res) {
-    res.render("index", {})
+    connection.query("SELECT * FROM burgers", function(err, data) {
+        console.log(data);
+        res.render("index", {burgers: data})
+    })
 })
 
 module.exports = router;

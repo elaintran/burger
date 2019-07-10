@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="menu-title">
+        <h2>Burger Menu</h2>
+    </div>
+    <div class="burger-section">
+        <div class="burger-menu">
+            {{#each burgers}}
+            <input type="checkbox" name="burger-item" id="burger-{{id}}">
+            <label for="burger-{{id}}" class="burger-item">
+                <h6 class="burger-name">{{burger_name}}</h6>
+                <p>{{burger_ingredients}}</p>
+                <p class="alt">+ Add to Checkout</p>
+            </label>
+            {{/each}}
+        </div>
+        <div class="checkout">
+            <h6 style="color: #e83b29;">Checkout</h6>
+        </div>
+    </div>
+</div>
