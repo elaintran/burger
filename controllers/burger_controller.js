@@ -4,8 +4,8 @@ var connection = require("../config/connection.js");
 
 //home route
 router.get("/", function(req, res) {
-    connection.query("SELECT * FROM burgers", function(err, data) {
-        // console.log(data);
+    connection.query("SELECT * FROM burger_menu", function(err, data) {
+        if (err) throw err;
         res.render("index", {burgers: data})
     })
 })
@@ -14,8 +14,24 @@ router.get("/", function(req, res) {
 router.post("/api/burgers", function(req, res) {
     connection.query("INSERT INTO burgers (burger_name, burger_description, burger_price) VALUES (?, ?, ?)",
     [req.body.name, req.body.description, req.body.price], function(err, data) {
+        if (err) {
+            //send server error
+        }
         res.json({burgers: data});
     })
+})
+
+//maybe two tables, one for display, one for manipulation
+//clicking add to cart updates the checkout cart
+
+//update if devoured or in checkout
+router.put("/api/burgers/:id?", function(req, res) {
+    //if burger is added to cart
+    if (req.body.checkout) {
+    //if checked out, move out of cart and into purchased
+    } else if (req.body.devoured) {
+
+    }
 })
 
 //checkout section is devoured = false

@@ -1,4 +1,4 @@
-INSERT INTO burgers (burger_name, burger_description, burger_price)
+INSERT INTO burger_menu (burger_name, burger_description, burger_price)
 VALUES
 ("Hamburger", "The original burger starts with a 100% pure beef patty seasoned with
 just a pinch of salt and pepper, then topped with a tangy pickle, chopped onions,
