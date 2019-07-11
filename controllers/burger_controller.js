@@ -9,6 +9,7 @@ router.get("/", getMenu, getBurgers, renderBurgers);
 
 //add burger onto menu
 router.post("/api/burger_menu", function(req, res) {
+    // console.log(req.body.price)
     burger.createMenuItem(["burger_name", "burger_description", "burger_price"],
     [req.body.name, req.body.description, req.body.price], function(data) {
         res.json({id: data.insertId});

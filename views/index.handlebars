@@ -1,9 +1,10 @@
 <div class="container">
     <div class="burger-section">
         <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-7 menu-section">
                 <div class="menu-title">
-                    <h2>Burger Menu</h2>
+                    <h2 class="mb-0">Burger Menu</h2>
+                    <i class="fas fa-plus-circle" data-toggle="modal" data-target="#burger-modal"></i>
                 </div>
                 <div class="row">
                     {{#each menu}}
@@ -48,7 +49,7 @@
                                         {{/each}}
                                     </div>
                                 </div>
-                                <button class="checkout">Checkout</button>
+                                <button class="round-btn checkout">Checkout</button>
                             </div>
                         </div>
                     </div>
@@ -75,6 +76,38 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="burger-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLabel">Add A Custom Burger</h2>
+                    {{!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button> --}}
+                </div>
+                <div class="modal-body">
+                    <form class="burger-form" method="POST">
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="name">Name</label>
+                                <input type="text" name="name" id="burger" placeholder="Hamburger" required>
+                            </div>
+                            <div class="col-6">
+                                <label for="price">Price</label>
+                                <input type="number" name="price" id="price" placeholder="2.00" min="0.00" max="10000.00" step="0.01" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="description">Description</label><br>
+                                <textarea name="description" id="description" placeholder="Enter a brief description about your burger." required></textarea>
+                            </div>
+                        </div>
+                        <input type="submit" class="round-btn add-burger" value="Add Burger">
+                    </form>
                 </div>
             </div>
         </div>

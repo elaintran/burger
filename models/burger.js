@@ -27,6 +27,7 @@ var burger = {
             cb(result);
         })
     },
+    //test
     //burger.createBurger inserts select menu item into mysql
     createBurger: function(cols, vals, cb) {
         orm.create("burgers", cols, vals, function(result) {

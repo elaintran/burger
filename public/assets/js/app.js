@@ -1,4 +1,21 @@
 $(function() {
+    //modal form on submit
+    $(".burger-form").on("submit", function(event) {
+        event.preventDefault();
+        var newMenuItem = {
+            name: $("#burger").val().trim(),
+            description: $("#description").val().trim(),
+            price: $("#price").val().trim()
+        }
+        //add new burger to menu
+        $.ajax("/api/burger_menu", {
+            type: "POST",
+            data: newMenuItem
+        }).then(function() {
+            location.reload();
+        })
+    })
+
     //possibly change this into a button
     //would like to make this into a select checked and move all checked into checkout
     $("label").on("click", function() {
@@ -6,7 +23,7 @@ $(function() {
             name: $(this).data("burger"),
             price: $(this).data("price")
         }
-        //add new burger
+        //add new burger to checkout
         $.ajax("/api/burgers", {
             type: "POST",
             data: newBurger
@@ -28,6 +45,7 @@ $(function() {
         })
         //ajax is async so need a counter to match array length to determine when ajax calls are complete
         var counter = 0;
+        //update all rows according to id
         $.each(burgerArr, function (id, arr) {
             $.ajax("/api/burgers/" + id, {
                 type: "PUT",
@@ -42,3 +60,10 @@ $(function() {
         })
     })
 })
+
+//todos
+//if checkout is empty, check text to checkout if empty
+//if not, display cart items
+//show purchased tab if cart is empty
+//connect button to modal
+//link values for a post request

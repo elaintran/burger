@@ -1,5 +1,13 @@
 var connection = require("./connection.js");
 
+function printQuestionMarks(num) {
+    var arr = [];
+    for (var i = 0; i < num; i++) {
+      arr.push("?");
+    }
+    return arr.toString();
+}
+
 var orm = {
     //display all information from mysql
     select: function(table, cb) {
@@ -11,15 +19,15 @@ var orm = {
     },
     //add new row into mysql
     create: function(table, cols, vals, cb) {
-        var queryString = `INSERT INTO ${table} (${cols.toString()}) VALUES (?, ?)`;
+        //cols.toString() converts array to string values
+        var queryString = `INSERT INTO ${table} (${cols.toString()}) VALUES (${printQuestionMarks(vals.length)})`;
         connection.query(queryString, vals, function(err, data) {
             if (err) throw err;
             cb(data);
         })
     },
-    //possibly take out objcColVals
     //update existing rows in mysql
-    update: function(table, objColVals, condition, cb) {
+    update: function(table, condition, cb) {
         var queryString = `UPDATE ${table} SET devoured=true WHERE ${condition}`;
         connection.query(queryString, function(err, data) {
             if (err) throw err;

@@ -1,9 +1,10 @@
 var express = require("express");
 var exphbs = require("express-handlebars");
 var app = express();
+//set up port for Heroku
 var PORT = process.env.PORT || 3000;
 
-//parsing object into json format
+//middleware to parse
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -12,6 +13,7 @@ app.use(express.json());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+//make the public folder available for use
 app.use(express.static("public"));
 
 var routes = require("./controllers/burger_controller.js");
