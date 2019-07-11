@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var burger = require("../models/burger.js");
-// var connection = require("../config/connection.js");
+var connection = require("../config/connection.js");
 
 //home route
 router.get("/", getMenu, getBurgers, renderBurgers);
@@ -11,6 +11,30 @@ router.post("/api/burgers", function(req, res) {
         res.json({id: data.insertId});
     })
 })
+
+router.put("/api/burgers/:id?", function(req, res) {
+    var condition = "id=" + req.body.id;
+    burger.update({devoured: req.body.devoured}, condition, function(data) {
+        if (data.affectedRows === 0) {
+            // If no rows were changed, then the ID must not exist, so 404
+            return res.status(404).end();
+        }
+        res.status(200).end();
+    })
+})
+
+// router.put("/api/burgers/:id?", function(req, res) {
+//     // console.log(req.body.id);
+//     // console.log(req.body.devoured);
+//     connection.query("UPDATE burgers SET devoured=true WHERE id=?", [req.body.id], function(data) {
+//         console.log(data.changedRows);
+//         // if (data.changedRows === 0) {
+//         //     // If no rows were changed, then the ID must not exist, so 404
+//         //     return res.status(404).end();
+//         // }
+//         // res.status(200).end();
+//     })
+// })
 
 function getMenu(req, res, next) {
     burger.selectMenu(function(data) {

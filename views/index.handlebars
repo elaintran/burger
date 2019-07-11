@@ -39,7 +39,7 @@
                                         {{#each burgers}}
                                             {{#unless devoured}}
                                             <div class="col-9">
-                                                <p class="burger-checkout">{{burger_name}}</p>
+                                                <p class="burger-checkout" data-id="{{id}}" data-devoured="{{devoured}}">{{burger_name}}</p>
                                             </div>
                                             <div class="col-3">
                                                 <p class="price-checkout">${{burger_price}}</p>
@@ -63,10 +63,10 @@
                                         {{#each burgers}}
                                             {{#if devoured}}
                                             <div class="col-9">
-                                                <p class="burger-checkout">{{burger_name}}</p>
+                                                <p>{{burger_name}}</p>
                                             </div>
                                             <div class="col-3">
-                                                <p class="price-checkout">${{burger_price}}</p>
+                                                <p>${{burger_price}}</p>
                                             </div>
                                             {{/if}}
                                         {{/each}}
@@ -76,46 +76,7 @@
                             </div>
                         </div>
                     </div>
-
             </div>
         </div>
     </div>
 </div>
-
-<script>
-    //insert into mysql
-    $("label").on("click", function() {
-        var newBurger = {
-            name: $(this).data("burger"),
-            price: $(this).data("price")
-        }
-        $.ajax("/api/burgers", {
-            type: "POST",
-            data: newBurger
-        }).then(function() {
-            location.reload();
-        })
-    })
-
-    $(".checkout").on("click", function() {
-        var burgerArr = [];
-        var priceArr = [];
-        $(".burger-checkout").each(function() {
-            burgerArr.push($(this).text());
-        })
-        $(".price-checkout").each(function() {
-            priceArr.push($(this).text());
-        })
-        var checkout = {
-            name: burgerArr,
-            price: priceArr
-        }
-        console.log(checkout);
-        $.ajax("/api/burgers", {
-            type: "PUT",
-            data: checkout
-        }).then(function() {
-            location.reload();
-        })
-    })
-</script>
