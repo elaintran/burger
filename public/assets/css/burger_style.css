@@ -59,7 +59,7 @@ p {
 .cart {
     background-color: #fef1ee;
     border-radius: 10px;
-    padding: 30px 40px;
+    padding: 20px;
 }
 
 .cart h6 {
@@ -90,10 +90,14 @@ p {
     opacity: 0.9;
 }
 
-.ordered {
+/* .ordered {
     padding-bottom: 15px;
     margin-bottom: 15px;
     border-bottom: 0.5px solid black;
+} */
+
+.ordered .col-3 p {
+    text-align: right;
 }
 
 .price {
@@ -128,3 +132,12 @@ p {
         padding-right: 0px;
     }
 }
+
+.card, .card-header {
+    background-color: transparent;
+    border: 0;
+}
+
+/* .card-body {
+    padding-top: 0;
+} */

@@ -27,30 +27,56 @@
                 </div>
             </div>
             <div class="col-md-5">
-                <div class="cart">
-                    <h6>Order Summary</h6>
-                    <div class="ordered">
-                        <div class="row">
-                            {{#each burgers}}
-                            <div class="col-9">
-                                <p>{{burger_name}}</p>
+                <div class="accordion cart" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <h6 class="mb-0 pb-0">Order Summary</h6>
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <div class="ordered">
+                                    <div class="row">
+                                        {{#each burgers}}
+                                            {{#unless devoured}}
+                                            <div class="col-9">
+                                                <p class="burger-checkout">{{burger_name}}</p>
+                                            </div>
+                                            <div class="col-3">
+                                                <p class="price-checkout">${{burger_price}}</p>
+                                            </div>
+                                            {{/unless}}
+                                        {{/each}}
+                                    </div>
+                                </div>
+                                <button class="checkout">Checkout</button>
                             </div>
-                            <div class="col-3">
-                                <p>{{burger_price}}</p>
-                            </div>
-                            {{/each}}
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-9">
-                            <p style="text-transform:uppercase;">Total</p>
-                        </div>
-                        <div class="col-3">
-                            <p>300</p>
+                        <div class="card">
+                            <div class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <h6 class="mb-0 pb-0">Purchase History</h6>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <div class="ordered">
+                                    <div class="row">
+                                        {{#each burgers}}
+                                            {{#if devoured}}
+                                            <div class="col-9">
+                                                <p class="burger-checkout">{{burger_name}}</p>
+                                            </div>
+                                            <div class="col-3">
+                                                <p class="price-checkout">${{burger_price}}</p>
+                                            </div>
+                                            {{/if}}
+                                        {{/each}}
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
                         </div>
                     </div>
-                    <button class="checkout">Checkout</button>
-                </div>
+
             </div>
         </div>
     </div>
@@ -66,6 +92,28 @@
         $.ajax("/api/burgers", {
             type: "POST",
             data: newBurger
+        }).then(function() {
+            location.reload();
+        })
+    })
+
+    $(".checkout").on("click", function() {
+        var burgerArr = [];
+        var priceArr = [];
+        $(".burger-checkout").each(function() {
+            burgerArr.push($(this).text());
+        })
+        $(".price-checkout").each(function() {
+            priceArr.push($(this).text());
+        })
+        var checkout = {
+            name: burgerArr,
+            price: priceArr
+        }
+        console.log(checkout);
+        $.ajax("/api/burgers", {
+            type: "PUT",
+            data: checkout
         }).then(function() {
             location.reload();
         })
