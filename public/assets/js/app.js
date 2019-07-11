@@ -23,8 +23,7 @@ $(function() {
         $(".burger-checkout").each(function() {
             //push object into array
             burgerArr.push({
-                id: $(this).data("id"),
-                devoured: true
+                id: $(this).data("id")
             });
         })
         //ajax is async so need a counter to match array length to determine when ajax calls are complete
