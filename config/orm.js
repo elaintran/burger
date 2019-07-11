@@ -9,8 +9,9 @@ var orm = {
         });
     },
     create: function(table, cols, vals, cb) {
-        var queryString = "INSERT INTO ?? (??, ??) VALUES (?, ?)";
-        connection.query(queryString, [table, [cols], [vals]], function(err, data) {
+        var queryString = `INSERT INTO ${table} (${cols.toString()}) VALUES (?, ?)`;
+        // console.log(vals);
+        connection.query(queryString, vals, function(err, data) {
             if (err) throw err;
             cb(data);
         })
