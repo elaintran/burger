@@ -1,9 +1,16 @@
 var express = require("express");
 var router = express.Router();
 var burger = require("../models/burger.js");
+var connection = require("../config/connection.js");
 
 //home route
 router.get("/", getMenu, getBurgers, renderBurgers);
+
+router.post("/api/burgers", function(req, res) {
+    connection.query("INSERT INTO burgers (burger_name, burger_price) VALUES (?, ?)", [req.body.name, req.body.price], function(err, data) {
+        res.json({id: data.insertId});
+    })
+})
 
 function getMenu(req, res, next) {
     burger.selectMenu(function(data) {
@@ -27,15 +34,15 @@ function renderBurgers(req, res) {
 }
 
 //create a new burger and add onto the menu
-router.post("/api/burgers", function(req, res) {
-    connection.query("INSERT INTO burgers (burger_name, burger_description, burger_price) VALUES (?, ?, ?)",
-    [req.body.name, req.body.description, req.body.price], function(err, data) {
-        if (err) {
-            //send server error
-        }
-        res.json({burgers: data});
-    })
-})
+// router.post("/api/burgers", function(req, res) {
+//     connection.query("INSERT INTO burgers (burger_name, burger_description, burger_price) VALUES (?, ?, ?)",
+//     [req.body.name, req.body.description, req.body.price], function(err, data) {
+//         if (err) {
+//             //send server error
+//         }
+//         res.json({burgers: data});
+//     })
+// })
 
 //maybe two tables, one for display, one for manipulation
 //clicking add to cart updates the checkout cart
