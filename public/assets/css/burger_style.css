@@ -72,12 +72,6 @@ p {
     margin-bottom: 0;
 }
 
-.cart {
-    background-color: #fef1ee;
-    border-radius: 10px;
-    padding: 20px;
-}
-
 .cart h6 {
     color: #e83b29;
     padding-bottom: 10px;
@@ -173,7 +167,7 @@ p {
 .modal-header {
     padding: 10px 0 25px;
     border-bottom: 0;
-    font-family: "Open Sans Condensed", sans-serif;
+    /* font-family: "Open Sans Condensed", sans-serif; */
 }
 
 .modal-body {
@@ -208,4 +202,33 @@ p {
 
 .modal {
     padding-left: 0;
+}
+
+.accordion {
+    padding: 0;
+}
+
+.card {
+    margin-bottom: 15px;
+    background-color: #fef1ee;
+    border-radius: 10px!important;
+    /* padding: 20px; */
+    padding: 0;
+}
+
+.card-header {
+    padding: 32 30px;
+    display: flex;
+}
+
+.card-header:hover {
+    cursor: pointer;
+}
+
+.card-body {
+    padding: 0 30px 30px;
+}
+
+.accordion-title {
+    margin-right: auto;
 }
