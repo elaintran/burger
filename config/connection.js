@@ -8,7 +8,8 @@ var connection = mysql.createConnection({
     port: 3306,
     user: "root",
     password: process.env.DB_PASSWORD,
-    database: "burgers_db"
+    database: "burgers_db",
+    socketPath: '/var/run/mysqld/mysqld.sock'
 })
 
 //connect to mysql
