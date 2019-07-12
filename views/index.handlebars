@@ -1,4 +1,5 @@
 <div class="container">
+    <!--Menu-->
     <div class="burger-section">
         <div class="row">
             <div class="col-md-7 menu-section">
@@ -24,6 +25,7 @@
                     {{/each}}
                 </div>
             </div>
+            <!--Accordion-->
             <div class="col-md-5">
                 <div class="accordion p-0" id="accordion">
                     <div class="card border-0 p-0 mb-3">
@@ -84,16 +86,16 @@
             <div class="modal-content border-0 p-4">
                 <div class="modal-header border-0">
                     <h4 class="modal-title">Add A Custom Burger</h4>
-                    {{!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button> --}}
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </button>
                 </div>
                 <div class="modal-body">
-                    <form class="burger-form">
+                    <form class="burger-form mb-0">
                         <div class="row">
                             <div class="col-6">
                                 <label for="name">Name</label>
-                                <input type="text" name="name" id="burger" placeholder="Hamburger" required>
+                                <input type="text" name="name" id="burger" placeholder="Burger Name" required>
                             </div>
                             <div class="col-6">
                                 <label for="price">Price</label>
@@ -104,7 +106,7 @@
                                 <textarea name="description" id="description" placeholder="Enter a brief description about your burger." required></textarea>
                             </div>
                         </div>
-                        <input type="submit" class="round-btn add-burger" value="Add Burger">
+                        <input type="submit" class="round-btn add-burger mt-3" value="Add Burger">
                     </form>
                 </div>
             </div>
