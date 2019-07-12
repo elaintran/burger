@@ -2,10 +2,32 @@ $(function() {
     //modal form on submit
     $(".burger-form").on("submit", function(event) {
         event.preventDefault();
+
+        //get value of burger price from form
+        var price = $("#price").val().trim();
+        //convert number to string to use index of
+        var priceString = price.toString();
+        //check if price has a decimal
+        var decimalIndex = priceString.indexOf(".");
+        //if it has a decimal
+        if (decimalIndex !== -1) {
+            //check how many decimal places
+            var cents = priceString.substring(decimalIndex + 1, decimalIndex + 4);
+            //if price has one decimal place
+            if (cents.length !== 2) {
+                //add a zero to the end of price
+                price = price + "0";
+            //if price has two decimal places
+            } else {
+                //use the value from the form
+                price = $("#price").val().trim();
+            }
+        }
+
         var newMenuItem = {
             name: $("#burger").val().trim(),
             description: $("#description").val().trim(),
-            price: $("#price").val().trim()
+            price: price
         }
         //add new burger to menu
         $.ajax("/api/burger_menu", {
@@ -16,7 +38,6 @@ $(function() {
         })
     })
 
-    //possibly change this into a button
     //would like to make this into a select checked and move all checked into checkout
     $(".add-item").on("click", function() {
         var newBurger = {
@@ -60,10 +81,3 @@ $(function() {
         })
     })
 })
-
-//todos
-//if checkout is empty, check text to checkout if empty
-//if not, display cart items
-//show purchased tab if cart is empty
-//connect button to modal
-//link values for a post request

@@ -11,6 +11,7 @@ var connection = mysql.createConnection({
     database: "burgers_db"
 })
 
+//connect to mysql
 connection.connect(function(err) {
     if (err) throw err;
     console.log("Connected as id " + connection.threadId);
