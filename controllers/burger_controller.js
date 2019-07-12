@@ -9,7 +9,7 @@ router.get("/", getMenu, getBurgers, renderBurgers);
 
 //add burger onto menu
 router.post("/api/burger_menu", function(req, res) {
-    burger.createMenuItem(["burger_name", "burger_description", "burger_price"],
+    burger.create("burger_menu", ["burger_name", "burger_description", "burger_price"],
     [req.body.name, req.body.description, req.body.price], function(data) {
         res.json({id: data.insertId});
     })
@@ -17,7 +17,7 @@ router.post("/api/burger_menu", function(req, res) {
 
 //add burger from menu onto checkout
 router.post("/api/burgers", function(req, res) {
-    burger.createBurger(["burger_name", "burger_price"], [req.body.name, req.body.price], function(data) {
+    burger.create("burgers", ["burger_name", "burger_price"], [req.body.name, req.body.price], function(data) {
         res.json({id: data.insertId});
     })
 })
@@ -37,7 +37,7 @@ router.put("/api/burgers/:id?", function(req, res) {
 
 //display all of the burger information from the first table (burger_menu)
 function getMenu(req, res, next) {
-    burger.selectMenu(function(data) {
+    burger.select("burger_menu", function(data) {
         req.menu = data;
         //goes to the next function in router.get("/") once finished running
         next();
@@ -46,7 +46,7 @@ function getMenu(req, res, next) {
 
 //display order information from the second table (burgers)
 function getBurgers(req, res, next) {
-    burger.selectBurger(function(data) {
+    burger.select("burgers", function(data) {
         req.burger = data;
         next();
     })

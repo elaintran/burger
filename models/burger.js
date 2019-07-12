@@ -4,32 +4,17 @@ var orm = require("../config/orm.js");
 //each burger function calls the corresponding orm function to display, add, update info
 //in the mysql database
 var burger = {
-    //burger.selectMenu displays the all of menu information
-    //burger_menu is the first table from the database and is only used to display data
+    //burger.select displays the all of the information
     //cb is callback
-    selectMenu: function(cb) {
-        orm.select("burger_menu", function(result) {
+    select: function(table, cb) {
+        orm.select(table, function(result) {
             cb(result);
         })
     },
-    //burger.selectBurger displays the burger orders from mysql
-    //burgers is the second table from the database
-    //burgers is the main table that is manipulated
-    selectBurger: function(cb) {
-        orm.select("burgers", function(result) {
-            cb(result);
-        })
-    },
-    //burger.createMenuItem inserts new burger information into mysql
+    //burger.create inserts new burger information into mysql
     //columns and values are arrays
-    createMenuItem: function(cols, vals, cb) {
-        orm.create("burger_menu", cols, vals, function(result) {
-            cb(result);
-        })
-    },
-    //burger.createBurger inserts selected menu item into mysql
-    createBurger: function(cols, vals, cb) {
-        orm.create("burgers", cols, vals, function(result) {
+    create: function(table, cols, vals, cb) {
+        orm.create(table, cols, vals, function(result) {
             cb(result);
         })
     },
