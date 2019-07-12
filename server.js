@@ -16,7 +16,8 @@ app.set("view engine", "handlebars");
 //make the public folder available for use
 app.use(express.static("public"));
 
-require("./controllers/burger_controller.js")(app);
+var routes = require("./controllers/burger_controller.js");
+app.use(routes);
 
 app.listen(PORT, function() {
     console.log("App listening on port " + PORT);
