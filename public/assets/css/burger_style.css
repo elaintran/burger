@@ -106,7 +106,11 @@ p {
     border-bottom: 0.5px solid black;
 } */
 
-.ordered .col-3 p {
+.ordered {
+    margin-bottom: 10px;
+}
+
+.ordered .col-4 p {
     text-align: right;
 }
 
@@ -135,12 +139,6 @@ p {
 
 .burger-item .col-5 {
     text-align: right;
-}
-
-@media screen and (max-width: 768px) {
-    .menu-section {
-        padding-right: 15px;
-    }
 }
 
 .card, .card-header {
@@ -231,4 +229,29 @@ p {
 
 .accordion-title {
     margin-right: auto;
+}
+
+/* @media screen and (max-width: 992px) {
+    .container {
+        max-width: 830px;
+    }
+} */
+
+@media screen and (max-width: 768px) {
+    .menu-section {
+        padding-right: 15px;
+    }
+    .accordion {
+        margin-top: 25px;
+    }
+}
+
+.empty-cart {
+    text-align: center;
+}
+
+.empty-cart .fa-shopping-cart {
+    font-size: 45px;
+    margin-bottom: 15px;
+    color: #e83b29;
 }

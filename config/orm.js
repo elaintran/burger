@@ -1,5 +1,6 @@
 var connection = require("./connection.js");
 
+//print question marks according to the number in the array
 function printQuestionMarks(num) {
     var arr = [];
     for (var i = 0; i < num; i++) {

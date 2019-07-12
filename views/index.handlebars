@@ -28,29 +28,28 @@
                 </div>
             </div>
             <div class="col-md-5">
-                <div class="accordion cart" id="accordionExample">
+                <div class="accordion cart" id="accordion">
                     <div class="card">
                         <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                             <h6 class="mb-0 pb-0 accordion-title">Order Summary</h6>
                             <h6 class="mb-0 pb-0"><i class="fas fa-plus"></i></h6>
                         </div>
-                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                             <div class="card-body">
                                 <div class="ordered">
                                     <div class="row">
                                         {{#each burgers}}
                                             {{#unless devoured}}
-                                            <div class="col-9">
+                                            <div class="col-8">
                                                 <p class="burger-checkout" data-id="{{id}}" data-devoured="{{devoured}}">{{burger_name}}</p>
                                             </div>
-                                            <div class="col-3">
+                                            <div class="col-4">
                                                 <p class="price-checkout">${{burger_price}}</p>
                                             </div>
                                             {{/unless}}
                                         {{/each}}
                                     </div>
                                 </div>
-                                <button class="round-btn checkout">Checkout</button>
                             </div>
                         </div>
                     </div>
@@ -59,16 +58,16 @@
                             <h6 class="mb-0 pb-0 accordion-title">Purchase History</h6>
                             <h6 class="mb-0 pb-0"><i class="fas fa-plus"></i></h6>
                         </div>
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                             <div class="card-body">
                                 <div class="ordered">
                                     <div class="row">
                                         {{#each burgers}}
                                             {{#if devoured}}
-                                            <div class="col-9">
+                                            <div class="col-8">
                                                 <p>{{burger_name}}</p>
                                             </div>
-                                            <div class="col-3">
+                                            <div class="col-4">
                                                 <p>${{burger_price}}</p>
                                             </div>
                                             {{/if}}
@@ -83,7 +82,7 @@
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="burger-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="burger-modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -115,3 +114,22 @@
         </div>
     </div>
 </div>
+
+<script>
+    function checkoutDisplay() {
+        if ($(".ordered .row").html().trim() === "") {
+            var emptyCart = $("<div>").addClass("empty-cart");
+            var cartIcon = $("<i>").addClass("fas fa-shopping-cart");
+            var messageTitle = $("<h6>").addClass("mb-0 pb-1").text("Your cart is empty!");
+            var message = $("<p>").text("Looks like you haven't added anything to your cart just yet!");
+            $(".checkout").remove();          
+            emptyCart.append(cartIcon).append(messageTitle).append(message);
+            $("#collapseOne .ordered").append(emptyCart);  
+        } else {
+            var button = $("<button>").addClass("round-btn checkout").text("Checkout");
+            $(".empty-cart").remove();
+            $("#collapseOne .ordered").append(button);
+        }
+    }
+    checkoutDisplay();
+</script>
