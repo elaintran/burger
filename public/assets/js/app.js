@@ -18,7 +18,7 @@ $(function() {
 
     //possibly change this into a button
     //would like to make this into a select checked and move all checked into checkout
-    $("label").on("click", function() {
+    $(".add-item").on("click", function() {
         var newBurger = {
             name: $(this).data("burger"),
             price: $(this).data("price")

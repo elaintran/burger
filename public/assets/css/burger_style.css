@@ -10,10 +10,10 @@ h6 {
 }
 
 p {
+    margin-bottom: 10px;
     font-size: 13px;
     letter-spacing: 0.5px;
     color: #6b6b6b;
-    margin-bottom: 10px;
 }
 
 .container {
@@ -25,112 +25,26 @@ p {
 }
 
 .menu-title {
-    width: 100%;
     display: flex;
     align-items: center;
-    margin-bottom: 25px;
+    width: 100%;
 }
 
 .menu-title h2 {
-    color: #e83b29;
-    text-transform: uppercase;
     font-family: "Open Sans Condensed", sans-serif;
     font-weight: 700;
+    text-transform: uppercase;
+    color: #e83b29;
 }
 
 .menu-title .fa-plus-circle {
-    font-size: 23px;
-    margin-left: 15px;
     margin-top: 2px;
+    font-size: 23px;
     color: #e83b29;
 }
 
 .menu-title .fa-plus-circle:hover {
     cursor: pointer;
-}
-
-.burger-item {
-    margin-bottom: 30px;
-}
-
-/*thinking about changing checkbox to a button*/
-.burger-item input[type="checkbox"] {
-    display: none;
-}
-
-.add-item {
-    font-weight: 700;
-    border: 1px solid #e83b29;
-    padding: 5px 15px;
-    border-radius: 20px;
-}
-
-.add-item p {
-    font-size: 11px;
-    text-transform: uppercase;
-    color: #e83b29;
-    margin-bottom: 0;
-}
-
-.cart h6 {
-    color: #e83b29;
-    padding-bottom: 10px;
-}
-
-.cart p {
-    font-weight: 700;
-    color: #3a3a3a;
-}
-
-.round-btn {
-    border: 0;
-    background-color: #e83b29;
-    text-transform: uppercase;
-    color: white;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    width: 100%;
-    padding: 10px;
-    border-radius: 20px;
-    margin-top: 10px;
-}
-
-.round-btn:hover {
-    opacity: 0.9;
-}
-
-/* .ordered {
-    padding-bottom: 15px;
-    margin-bottom: 15px;
-    border-bottom: 0.5px solid black;
-} */
-
-.ordered {
-    margin-bottom: 10px;
-}
-
-.ordered .col-4 p {
-    text-align: right;
-}
-
-.price {
-    float: right;
-}
-
-.burger-title {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.burger-title h6 {
-    margin-bottom: 0;
-}
-
-.fa-pen {
-    font-size: 11px;
-    margin-left: 15px;
 }
 
 .burger-item .row {
@@ -141,18 +55,72 @@ p {
     text-align: right;
 }
 
-.card, .card-header {
-    background-color: transparent;
-    border: 0;
+.add-item {
+    border: 1px solid #e83b29;
+    border-radius: 20px;
+    padding: 5px 15px;
+    background-color: white;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #e83b29;
+    transition: 200ms;
 }
 
-/* .card-body {
-    padding-top: 0;
-} */
+.add-item:hover {
+    background-color: #e83b29;
+    color: white;
+    transition: 200ms;
+}
 
-.modal-content {
+.accordion h6 {
+    color: #e83b29;
+}
+
+.accordion p {
+    font-weight: 700;
+    color: #3a3a3a;
+}
+
+.accordion-title {
+    margin-right: auto;
+}
+
+.empty-cart {
+    text-align: center;
+}
+
+.empty-cart .fa-shopping-cart {
+    font-size: 45px;
+    margin-bottom: 15px;
+    color: #e83b29;
+}
+
+.round-btn {
     border: 0;
-    padding: 25px;
+    border-radius: 20px;
+    padding: 10px;
+    width: 100%;
+    background-color: #e83b29;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: white;
+    transition: 200ms;
+}
+
+.round-btn:hover {
+    opacity: 0.9;
+    transition: 200ms;
+}
+
+.ordered .col-4 p {
+    text-align: right;
+}
+
+.card, .card-header {
+    background-color: transparent;
 }
 
 .modal-title {
@@ -164,17 +132,10 @@ p {
 
 .modal-header {
     padding: 10px 0 25px;
-    border-bottom: 0;
-    /* font-family: "Open Sans Condensed", sans-serif; */
 }
 
 .modal-body {
     padding: 10px;
-}
-
-.modal-footer {
-    border: 0;
-    padding-top: 0;
 }
 
 .burger-form label {
@@ -198,25 +159,14 @@ p {
     height: 145px;
 }
 
-.modal {
-    padding-left: 0;
-}
-
-.accordion {
-    padding: 0;
-}
-
 .card {
-    margin-bottom: 15px;
     background-color: #fef1ee;
     border-radius: 10px!important;
-    /* padding: 20px; */
-    padding: 0;
 }
 
 .card-header {
-    padding: 32 30px;
     display: flex;
+    padding: 32 30px;
 }
 
 .card-header:hover {
@@ -227,16 +177,6 @@ p {
     padding: 0 30px 30px;
 }
 
-.accordion-title {
-    margin-right: auto;
-}
-
-/* @media screen and (max-width: 992px) {
-    .container {
-        max-width: 830px;
-    }
-} */
-
 @media screen and (max-width: 768px) {
     .menu-section {
         padding-right: 15px;
@@ -244,14 +184,4 @@ p {
     .accordion {
         margin-top: 25px;
     }
-}
-
-.empty-cart {
-    text-align: center;
-}
-
-.empty-cart .fa-shopping-cart {
-    font-size: 45px;
-    margin-bottom: 15px;
-    color: #e83b29;
 }

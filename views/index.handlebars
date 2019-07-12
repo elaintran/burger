@@ -2,23 +2,20 @@
     <div class="burger-section">
         <div class="row">
             <div class="col-md-7 menu-section">
-                <div class="menu-title">
+                <div class="menu-title mb-4">
                     <h2 class="mb-0">Burger Menu</h2>
-                    <i class="fas fa-plus-circle" data-toggle="modal" data-target="#burger-modal"></i>
+                    <i class="fas fa-plus-circle ml-3" data-toggle="modal" data-target="#burger-modal"></i>
                 </div>
                 <div class="row">
                     {{#each menu}}
                     <div class="col-12">
-                        <div class="burger-item">
-                            <div class="row">
+                        <div class="burger-item mb-4">
+                            <div class="row mb-1">
                                 <div class="col-7">
-                                    <h6><span class="burger-name">{{burger_name}}</span> @ $<span class="burger-price">{{burger_price}}</span></h6>
+                                    <h6 class="mb-0"><span class="burger-name">{{burger_name}}</span> @ $<span class="burger-price">{{burger_price}}</span></h6>
                                 </div>
-                                <div class="col-5">
-                                    <input type="checkbox" name="burger-item" id="burger-{{id}}">
-                                    <label for="burger-{{id}}" data-burger="{{burger_name}}" data-price="{{burger_price}}" class="add-item">
-                                        <p>+ Add To Cart</p>
-                                    </label>
+                                <div class="col-5 pl-0">
+                                    <button class="add-item" data-burger="{{burger_name}}" data-price="{{burger_price}}">+ Add To Cart</button>
                                 </div>
                             </div>
                             <p>{{burger_description}}</p>
@@ -28,9 +25,9 @@
                 </div>
             </div>
             <div class="col-md-5">
-                <div class="accordion cart" id="accordion">
-                    <div class="card">
-                        <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <div class="accordion p-0" id="accordion">
+                    <div class="card border-0 p-0 mb-3">
+                        <div class="card-header border-0" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                             <h6 class="mb-0 pb-0 accordion-title">Order Summary</h6>
                             <h6 class="mb-0 pb-0"><i class="fas fa-plus"></i></h6>
                         </div>
@@ -53,8 +50,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <div class="card border-0 p-0">
+                        <div class="card-header border-0" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                             <h6 class="mb-0 pb-0 accordion-title">Purchase History</h6>
                             <h6 class="mb-0 pb-0"><i class="fas fa-plus"></i></h6>
                         </div>
@@ -82,11 +79,11 @@
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="burger-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal fade pl-0" id="burger-modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalLabel">Add A Custom Burger</h4>
+            <div class="modal-content border-0 p-4">
+                <div class="modal-header border-0">
+                    <h4 class="modal-title">Add A Custom Burger</h4>
                     {{!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button> --}}
@@ -126,7 +123,7 @@
             emptyCart.append(cartIcon).append(messageTitle).append(message);
             $("#collapseOne .ordered").append(emptyCart);  
         } else {
-            var button = $("<button>").addClass("round-btn checkout").text("Checkout");
+            var button = $("<button>").addClass("round-btn checkout mt-3").text("Checkout");
             $(".empty-cart").remove();
             $("#collapseOne .ordered").append(button);
         }
