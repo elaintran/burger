@@ -3,132 +3,14 @@
     <div class="burger-section">
         <div class="row">
             <div class="col-md-7 menu-section">
-                <div class="menu-title mb-4">
-                    <h2 class="mb-0">Burger Menu</h2>
-                    <i class="fas fa-plus-circle ml-3" data-toggle="modal" data-target="#burger-modal" onclick="void(0)"></i>
-                </div>
-                <div class="row">
-                    {{#each menu}}
-                    <div class="col-12">
-                        <div class="burger-item mb-4">
-                            <div class="row mb-1">
-                                <div class="col-7">
-                                    <h6 class="mb-0"><span class="burger-name">{{burger_name}}</span> @ $<span class="burger-price">{{burger_price}}</span></h6>
-                                </div>
-                                <div class="col-5 pl-0">
-                                    <button class="add-item" data-burger="{{burger_name}}" data-price="{{burger_price}}">+ Add To Cart</button>
-                                </div>
-                            </div>
-                            <p>{{burger_description}}</p>
-                        </div>
-                    </div>
-                    {{/each}}
-                </div>
+                {{> menu}}
             </div>
             <!--Accordion-->
             <div class="col-md-5">
-                <div class="accordion p-0" id="accordion">
-                    <div class="card border-0 p-0 mb-3">
-                        <div class="card-header border-0" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onclick="void(0)">
-                            <h6 class="mb-0 pb-0 accordion-title">Order Summary</h6>
-                            <h6 class="mb-0 pb-0"><i class="fas fa-plus"></i></h6>
-                        </div>
-                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                            <div class="card-body">
-                                <div class="ordered">
-                                    <div class="row">
-                                        {{#each burgers}}
-                                            {{#unless devoured}}
-                                            <div class="col-8">
-                                                <p class="burger-checkout" data-id="{{id}}" data-devoured="{{devoured}}">{{burger_name}}</p>
-                                            </div>
-                                            <div class="col-4">
-                                                <p class="price-checkout">${{burger_price}}</p>
-                                            </div>
-                                            {{/unless}}
-                                        {{/each}}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card border-0 p-0">
-                        <div class="card-header border-0" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-controls="collapseTwo" onclick="void(0)">
-                            <h6 class="mb-0 pb-0 accordion-title">Purchase History</h6>
-                            <h6 class="mb-0 pb-0"><i class="fas fa-plus"></i></h6>
-                        </div>
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion" onclick="void(0)">
-                            <div class="card-body">
-                                <div class="ordered">
-                                    <div class="row">
-                                        {{#each burgers}}
-                                            {{#if devoured}}
-                                            <div class="col-8">
-                                                <p>{{burger_name}}</p>
-                                            </div>
-                                            <div class="col-4">
-                                                <p>${{burger_price}}</p>
-                                            </div>
-                                            {{/if}}
-                                        {{/each}}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {{> accordion}}
             </div>
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade pl-0" id="burger-modal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content border-0 p-4">
-                <div class="modal-header border-0">
-                    <h4 class="modal-title">Add A Custom Burger</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <i class="fa fa-times" aria-hidden="true"></i>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form class="burger-form mb-0">
-                        <div class="row">
-                            <div class="col-6">
-                                <label for="name">Name</label>
-                                <input type="text" name="name" id="burger" placeholder="Burger Name" required>
-                            </div>
-                            <div class="col-6">
-                                <label for="price">Price</label>
-                                <input type="number" name="price" id="price" placeholder="2.00" min="0.00" max="10000.00" step="0.01" required>
-                            </div>
-                            <div class="col-12">
-                                <label for="description">Description</label><br>
-                                <textarea name="description" id="description" placeholder="Enter a brief description about your burger." required></textarea>
-                            </div>
-                        </div>
-                        <input type="submit" class="round-btn add-burger mt-3" value="Add Burger">
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+    {{> modal}}
 </div>
-
-<script>
-    function checkoutDisplay() {
-        if ($(".ordered .row").html().trim() === "") {
-            var emptyCart = $("<div>").addClass("empty-cart");
-            var cartIcon = $("<i>").addClass("fas fa-shopping-cart");
-            var messageTitle = $("<h6>").addClass("mb-0 pb-1").text("Your cart is empty!");
-            var message = $("<p>").text("Looks like you haven't added anything to your cart just yet!");
-            $(".checkout").remove();          
-            emptyCart.append(cartIcon).append(messageTitle).append(message);
-            $("#collapseOne .ordered").append(emptyCart);
-        } else {
-            var button = $("<button>").addClass("round-btn checkout mt-3").text("Checkout");
-            $(".empty-cart").remove();
-            $("#collapseOne .ordered").append(button);
-        }
-    }
-    checkoutDisplay();
-</script>

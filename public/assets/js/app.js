@@ -1,4 +1,21 @@
-$(function() {
+$(document).ready(function() {
+    function checkoutDisplay() {
+        if ($(".ordered .row").html().trim() === "") {
+            var emptyCart = $("<div>").addClass("empty-cart");
+            var cartIcon = $("<i>").addClass("fas fa-shopping-cart");
+            var messageTitle = $("<h6>").addClass("mb-0 pb-1").text("Your cart is empty!");
+            var message = $("<p>").text("Looks like you haven't added anything to your cart just yet!");
+            $(".checkout").remove();          
+            emptyCart.append(cartIcon).append(messageTitle).append(message);
+            $("#collapseOne .ordered").append(emptyCart);
+        } else {
+            var button = $("<button>").addClass("round-btn checkout mt-3").text("Checkout");
+            $(".empty-cart").remove();
+            $("#collapseOne .ordered").append(button);
+        }
+    }
+    checkoutDisplay();
+
     //modal form on submit
     $(".burger-form").on("submit", function(event) {
         event.preventDefault();

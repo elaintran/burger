@@ -1,0 +1,50 @@
+<div class="accordion p-0" id="accordion">
+    <div class="card border-0 p-0 mb-3">
+        <div class="card-header border-0" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onclick="void(0)">
+            <h6 class="mb-0 pb-0 accordion-title">Order Summary</h6>
+            <h6 class="mb-0 pb-0"><i class="fas fa-plus"></i></h6>
+        </div>
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+                <div class="ordered">
+                    <div class="row">
+                        {{#each burgers}}
+                            {{#unless devoured}}
+                            <div class="col-8">
+                                <p class="burger-checkout" data-id="{{id}}" data-devoured="{{devoured}}">{{burger_name}}</p>
+                            </div>
+                            <div class="col-4">
+                                <p class="price-checkout">${{burger_price}}</p>
+                            </div>
+                            {{/unless}}
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card border-0 p-0">
+        <div class="card-header border-0" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-controls="collapseTwo" onclick="void(0)">
+            <h6 class="mb-0 pb-0 accordion-title">Purchase History</h6>
+            <h6 class="mb-0 pb-0"><i class="fas fa-plus"></i></h6>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion" onclick="void(0)">
+            <div class="card-body">
+                <div class="ordered">
+                    <div class="row">
+                        {{#each burgers}}
+                            {{#if devoured}}
+                            <div class="col-8">
+                                <p>{{burger_name}}</p>
+                            </div>
+                            <div class="col-4">
+                                <p>${{burger_price}}</p>
+                            </div>
+                            {{/if}}
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
