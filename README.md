@@ -1,13 +1,11 @@
 # Burger
-Burger is a burger logging application that allows users to add their own custom burgers to the menu,select burgers to checkout, and track their purchase history. All actions are powered by the MySQL database.
+Burger is a full-stack application that reflects a restaurant storefront where users are able to add their own custom items to the menu, select burgers to checkout, and track their purchase history. Includes MySQL integration and a custom ORM in order to create, log, and display burger data real-time.
 
 ## Development Process
-The burger application is set up with two tables within MySQL: `burger_menu` and `burgers`.
-
-`burger_menu` is used as a visual and displays all of the new and existing burgers. Custom burgers are added onto the menu via modal using a `POST` request. Once the user selects a burger from the menu to add to cart, the data is added to `burgers` by sending another `POST` request.
-
-`burgers` holds the burger data added from `burger_menu` and the information is presented in the
-**Order Summary** (not devoured) and **Purchase History** (devoured) sections. Instead of checking out (devouring) the burgers individually, `$.each` is utilized to iterate through all of the burgers and send multiple `PUT` requests in order to update the status (change the devoured state to true) of all burgers in that section. All of the burgers purchased (devoured) are then moved to **Purchase History**.
+* A `GET` request is send upon load from the client side and using a `SELECT` statement from the server side to pull all of the data from the MySQL table. In this case, it is used to retrieve the information from the `burger_menu` and the `burgers` tables to append on the menu and the Order Summary and Purchase History sections respectively.
+* Two `POST` requests are sent in this application: (1) when custom burgers are added onto the menu via modal and (2) when users select a burger from the menu to add to cart. In order to add the data into the database, an `INSERT` statement is utilized, followed by the name of the specific table and all of the values.
+* The `$.each` function is utilized to iterate through the item listings in the cart and send multiple `PUT` requests to update the purchase status of all burgers in that section. An `UPDATE` statement is called where the status is set to true if the id sent matches the id of the selected row. All of the burgers checked out are then moved to Purchase History.
+* Express-Handlebars renders the burger data using the built-in `{{#each}}` helper to loop through all the objects from the database, while the `{{#if}}` and `{{#unless}}` helpers renders burger data in accordance to their purchase status.
 
 ## Demo
 [View Demo Here](https://burger-ett.herokuapp.com)
