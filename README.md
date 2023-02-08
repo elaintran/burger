@@ -8,7 +8,7 @@ Burger is a full-stack application that reflects a restaurant storefront where u
 * Express-Handlebars renders the burger data using the built-in `{{#each}}` helper to loop through all the objects from the database, while the `{{#if}}` and `{{#unless}}` helpers renders burger data in accordance to their purchase status.
 
 ## Demo
-[View Demo Here](https://burger-ett.herokuapp.com)
+[View Demo Here](https://burger-590o.onrender.com/)
 
 ## Technologies Used
 * [MySQL](https://www.npmjs.com/package/mysql)
